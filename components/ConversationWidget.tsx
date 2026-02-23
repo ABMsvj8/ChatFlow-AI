@@ -45,7 +45,7 @@ export default function ConversationWidget() {
               className="text-xs text-[#fafafa] px-3 py-2 rounded-2xl rounded-br-sm max-w-[75%]"
               style={{ background: '#27272a' }}
             >
-              Hey is this still available?
+              Hey I saw your post, is the mentorship still open?
             </div>
           </div>
 
@@ -70,17 +70,17 @@ export default function ConversationWidget() {
                 border: '1px solid rgba(124,58,237,0.2)',
               }}
             >
-              Hey! Yes it is 👋 Are you looking for the standard or premium package?
+              Hey! Yes we still have a few spots 🔥 Are you looking to scale past $10k/month?
             </div>
           </div>
 
           {/* Customer message 2 */}
           <div className="msg-3 flex justify-end">
             <div
-              className="text-xs text-[#fafafa] px-3 py-2 rounded-2xl rounded-br-sm max-w-[40%]"
+              className="text-xs text-[#fafafa] px-3 py-2 rounded-2xl rounded-br-sm max-w-[60%]"
               style={{ background: '#27272a' }}
             >
-              premium
+              yeah that&apos;s the goal
             </div>
           </div>
 
@@ -93,7 +93,30 @@ export default function ConversationWidget() {
                 border: '1px solid rgba(124,58,237,0.2)',
               }}
             >
-              Perfect — I can get you set up right now. What&apos;s a good time this week?
+              Perfect, you&apos;re exactly who this is for. Let me get you booked in — what does your schedule look like this week?
+            </div>
+          </div>
+
+          {/* Customer message 3 */}
+          <div className="msg-5 flex justify-end">
+            <div
+              className="text-xs text-[#fafafa] px-3 py-2 rounded-2xl rounded-br-sm max-w-[70%]"
+              style={{ background: '#27272a' }}
+            >
+              I&apos;m free Thursday or Friday
+            </div>
+          </div>
+
+          {/* Agent message 3 */}
+          <div className="msg-6 flex justify-start">
+            <div
+              className="text-xs text-[#fafafa] px-3 py-2 rounded-2xl rounded-bl-sm max-w-[90%]"
+              style={{
+                background: 'rgba(124,58,237,0.15)',
+                border: '1px solid rgba(124,58,237,0.2)',
+              }}
+            >
+              Locked you in for Thursday at 2pm ✓ Check your DMs for the link!
             </div>
           </div>
 
@@ -108,7 +131,7 @@ export default function ConversationWidget() {
               }}
             >
               <Calendar className="w-3 h-3" />
-              Booked: Tuesday 3pm ✓
+              Booked: Thursday 2pm ✓
             </div>
           </div>
         </div>

@@ -122,30 +122,30 @@ export default function Home() {
     {
       num: '01',
       icon: <Brain className="w-6 h-6 text-[#7c3aed]" />,
-      title: 'Intent Engine',
+      title: 'DM Intent Engine',
       sub: 'Knows what they mean, not just what they type',
-      body: 'Our AI understands context, tone, and buying signals — not just keywords. It reads between the lines so nothing falls through the cracks.',
+      body: "Knows if they're a buyer, a browser, or just curious — and responds accordingly.",
     },
     {
       num: '02',
       icon: <Layers className="w-6 h-6 text-[#7c3aed]" />,
       title: 'Context Memory',
       sub: 'Remembers every conversation. Picks up exactly where you left off.',
-      body: "A customer who messaged 3 weeks ago is greeted like a friend, not a stranger. Full thread recall across every session and platform.",
+      body: "Remembers every DM. Picks up exactly where the conversation left off, every time.",
     },
     {
       num: '03',
       icon: <Target className="w-6 h-6 text-[#7c3aed]" />,
-      title: 'Outcome Driven',
+      title: 'Books Like Your Best Setter',
       sub: "Doesn't just respond. Closes, books, converts.",
-      body: "Every conversation has a goal. ChatFlow agents are trained to drive outcomes — a booked call, a closed deal, a resolved ticket.",
+      body: "Qualifies. Handles objections. Books the call. Closes the sale. Without you lifting a finger.",
     },
   ]
 
   const metrics = [
-    { value: '10,000+', label: 'businesses' },
-    { value: '2M+', label: 'conversations/month' },
-    { value: '40%', label: 'higher conversion rate' },
+    { value: '10,000+', label: 'Businesses Running 24/7' },
+    { value: '2M+', label: 'DMs Handled Monthly' },
+    { value: '40%', label: 'More Leads Converted' },
     { value: '< 5 min', label: 'setup time' },
   ]
 
@@ -249,7 +249,7 @@ export default function Home() {
               {/* Label */}
               <div className="fade-up fade-up-delay-1 mb-6">
                 <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#7c3aed]">
-                  Conversational AI Infrastructure
+                  AI-POWERED DM AUTOMATION
                 </span>
               </div>
 
@@ -259,20 +259,19 @@ export default function Home() {
                   className="block text-[#fafafa]"
                   style={{ fontSize: 'clamp(48px, 6vw, 84px)' }}
                 >
-                  Your competitors are still
+                  Your setters can&apos;t work
                 </span>
                 <span
                   className="block text-[#fafafa]"
                   style={{ fontSize: 'clamp(48px, 6vw, 84px)' }}
                 >
-                  sending people to voicemail.
+                  24/7. Your AI can.
                 </span>
               </h1>
 
               {/* Subhead */}
               <p className="fade-up fade-up-delay-3 text-[#71717a] text-lg font-medium leading-relaxed mb-10 max-w-lg">
-                ChatFlow deploys AI agents that close deals, book appointments, and handle
-                support — across every DM, 24/7. While you sleep.
+                ChatFlow deploys AI agents directly into your Instagram, Facebook, WhatsApp, and TikTok DMs — qualifying leads, booking calls, and closing sales around the clock. No setters. No missed leads. No ManyChat.
               </p>
 
               {/* CTAs */}
@@ -317,7 +316,7 @@ export default function Home() {
       {/* ── 2. SOCIAL PROOF BAR ──────────────────────────────────────────── */}
       <div className="border-y border-[#18181b] py-6 overflow-hidden">
         <p className="text-center text-xs font-semibold tracking-[0.15em] uppercase text-[#52525b] mb-6">
-          Deploy to any platform in minutes
+          Works inside every platform your customers already use
         </p>
         <div className="relative overflow-hidden">
           {/* Fade edges */}
@@ -352,8 +351,8 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-6 py-28">
         <div className="text-center mb-16">
           <h2 className="font-black text-[#fafafa] leading-tight mb-4" style={{ fontSize: 'clamp(36px, 4vw, 60px)' }}>
-            Chatbots guess.{' '}
-            <span className="text-[#7c3aed]">Agents understand.</span>
+            Setters sleep.{' '}
+            <span className="text-[#7c3aed]">Leads don&apos;t wait.</span>
           </h2>
           <p className="text-[#71717a] text-lg max-w-xl mx-auto">
             The difference between a bot that frustrates and an agent that closes.
@@ -370,7 +369,7 @@ export default function Home() {
               </span>
             </div>
             <p className="font-black text-2xl text-[#fafafa] mb-6">
-              Rigid. Dead-end. Frustrating.
+              A setter misses a DM at 11pm. The lead goes cold. You pay $4,000/month for 8-hour coverage and hope for the best.
             </p>
             <OldWayDiagram />
             <p className="text-xs text-[#52525b] mt-4 italic">
@@ -394,7 +393,7 @@ export default function Home() {
               </span>
             </div>
             <p className="font-black text-2xl text-[#fafafa] mb-6">
-              Fluid. Contextual. Closing.
+              An AI agent responds in seconds, qualifies the lead, handles objections, and books the call — whether it&apos;s 2pm or 2am.
             </p>
             <ChatFlowWay />
           </div>
@@ -508,12 +507,10 @@ export default function Home() {
                 className="font-black text-[#fafafa] leading-tight mb-4"
                 style={{ fontSize: 'clamp(32px, 4vw, 60px)' }}
               >
-                Stop losing conversations.
-                <br />
-                Start closing them.
+                Stop paying setters. Start printing leads.
               </h2>
               <p className="text-[#71717a] text-lg mb-10">
-                Free to start. No credit card. Live in 5 minutes.
+                One AI agent in your DMs. Zero missed leads. Free to start.
               </p>
               <SignupButton
                 mode="signup"
@@ -573,7 +570,7 @@ export default function Home() {
               © 2026 ChatFlow AI. All rights reserved.
             </p>
             <p className="text-xs text-[#52525b] italic">
-              Built for the founders who don&apos;t sleep.
+              Built for the founders who refuse to miss a lead.
             </p>
             <div className="flex items-center gap-4">
               <BarChart3 className="w-4 h-4 text-[#27272a]" />
