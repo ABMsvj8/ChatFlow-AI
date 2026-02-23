@@ -4,9 +4,9 @@ import { createServerClient } from '@supabase/ssr'
 
 const TOKEN_URL = 'https://graph.instagram.com/v20.0/oauth/access_token'
 const GRAPH_API_URL = 'https://graph.instagram.com/v20.0'
-const CLIENT_ID = process.env.INSTAGRAM_CLIENT_ID
+const CLIENT_ID = process.env.INSTAGRAM_APP_ID
 const CLIENT_SECRET = process.env.INSTAGRAM_CLIENT_SECRET
-const REDIRECT_URI = `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/instagram/callback`
+const REDIRECT_URI = 'https://chatflow-ai-black.vercel.app/api/auth/instagram/callback'
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   const { searchParams, origin } = request.nextUrl

@@ -2,9 +2,9 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { cookies } from 'next/headers'
 import { createServerClient } from '@supabase/ssr'
 
-const INSTAGRAM_OAUTH_URL = 'https://api.instagram.com/oauth/authorize'
+const INSTAGRAM_OAUTH_URL = 'https://www.facebook.com/v19.0/dialog/oauth'
 const APP_ID = process.env.INSTAGRAM_APP_ID
-const REDIRECT_URI = `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/instagram/callback`
+const REDIRECT_URI = 'https://chatflow-ai-black.vercel.app/api/auth/instagram/callback'
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   // Get the user's business
@@ -95,7 +95,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   const params = new URLSearchParams({
     client_id: APP_ID!,
     redirect_uri: REDIRECT_URI,
-    scope: 'instagram_business_profile,instagram_business_content_publish,instagram_business_manage_messages,pages_show_list,pages_read_engagement',
+    scope: 'instagram_basic,pages_show_list,pages_read_engagement',
     response_type: 'code',
     state,
   })
