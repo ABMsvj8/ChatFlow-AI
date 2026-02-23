@@ -4,8 +4,8 @@ import { createServerClient } from '@supabase/ssr'
 
 const TOKEN_URL = 'https://graph.instagram.com/v20.0/oauth/access_token'
 const GRAPH_API_URL = 'https://graph.instagram.com/v20.0'
-const APP_ID = process.env.INSTAGRAM_APP_ID
-const APP_SECRET = process.env.INSTAGRAM_APP_SECRET
+const CLIENT_ID = process.env.INSTAGRAM_CLIENT_ID
+const CLIENT_SECRET = process.env.INSTAGRAM_CLIENT_SECRET
 const REDIRECT_URI = `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/instagram/callback`
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
@@ -39,8 +39,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: new URLSearchParams({
-        client_id: APP_ID!,
-        client_secret: APP_SECRET!,
+        client_id: CLIENT_ID!,
+        client_secret: CLIENT_SECRET!,
         grant_type: 'authorization_code',
         redirect_uri: REDIRECT_URI,
         code,
