@@ -30,7 +30,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     // Decode state
     const decodedState = JSON.parse(Buffer.from(state, 'base64').toString('utf-8'))
-    const businessId = decodedState.businessId
+    let businessId = decodedState.businessId
 
     // Exchange code for access token
     const tokenResponse = await fetch(TOKEN_URL, {
