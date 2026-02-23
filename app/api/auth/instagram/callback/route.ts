@@ -120,7 +120,8 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         }
       )
 
-      const { data: user } = await supabase.auth.getUser()
+      const { data } = await supabase.auth.getUser()
+      const user = data?.user
       
       if (user) {
         const slug = `biz-${user.id.slice(0, 8)}-${Date.now()}`
@@ -130,7 +131,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
             owner_id: user.id,
             name: `${user.email?.split('@')[0] || 'User'}'s Business`,
             slug,
-            plan: 'free',
           })
           .select('id')
           .single()
