@@ -52,7 +52,7 @@ function DashboardContent() {
     { label: 'Agents', icon: Zap, href: '/agents' },
     { label: 'Conversations', icon: MessageSquare, href: '/conversations' },
     { label: 'Platforms', icon: Link2, href: '/platforms' },
-    { label: 'Analytics', icon: BarChart3, href: '/analytics' },
+    { label: 'Analytics', icon: BarChart3, href: '/dashboard/analytics' },
     { label: 'Settings', icon: Settings, href: '/settings' },
   ]
 
