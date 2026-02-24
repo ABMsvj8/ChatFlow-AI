@@ -85,11 +85,26 @@ export interface Database {
           created_at: string
           updated_at: string
         }
-        Insert: Omit<
-          Database['public']['Tables']['conversations']['Row'],
-          'created_at' | 'updated_at'
-        >
-        Update: Partial<Database['public']['Tables']['conversations']['Insert']>
+        Insert: {
+          id?: string
+          business_id: string
+          agent_id: string
+          connected_account_id: string
+          platform_conversation_id: string
+          platform_user_id: string
+          platform_user_name?: string | null
+          status?: 'active' | 'resolved' | 'escalated'
+        }
+        Update: {
+          id?: string
+          business_id?: string
+          agent_id?: string
+          connected_account_id?: string
+          platform_conversation_id?: string
+          platform_user_id?: string
+          platform_user_name?: string | null
+          status?: 'active' | 'resolved' | 'escalated'
+        }
       }
       messages: {
         Row: {

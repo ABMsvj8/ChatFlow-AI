@@ -7,10 +7,5 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode
 }): React.ReactElement {
-  return (
-    <div className="flex h-screen bg-black">
-      {/* Main Content — full width for now */}
-      <main className="w-full min-h-screen bg-black">{children}</main>
-    </div>
-  )
+  return <div className="bg-black text-white">{children}</div>
 }
