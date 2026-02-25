@@ -35,10 +35,11 @@ export async function postMessageToInstagram(
 
 /**
  * Verify webhook token
+ * Trim whitespace to handle env var quirks
  */
 export function verifyWebhookToken(
   providedToken: string,
   expectedToken: string
 ): boolean {
-  return providedToken === expectedToken
+  return providedToken.trim() === expectedToken.trim()
 }
