@@ -323,6 +323,13 @@ function DashboardContent() {
                         >
                           {platform.connected ? 'Manage' : 'Connect'}
                         </Link>
+                      ) : platform.name === 'Facebook' ? (
+                        <Link
+                          href="/api/auth/facebook/customers"
+                          className="w-full px-3 py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 text-xs font-medium transition-all border border-purple-500/30 text-center"
+                        >
+                          {platform.connected ? 'Manage' : 'Connect'}
+                        </Link>
                       ) : (
                         <button className="w-full px-3 py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 text-xs font-medium transition-all border border-purple-500/30 disabled:opacity-50">
                           {platform.connected ? 'Manage' : 'Coming Soon'}

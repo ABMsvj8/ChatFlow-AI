@@ -129,3 +129,60 @@ export async function getInstagramAccountInfo(
     return null
   }
 }
+
+/**
+ * Get Facebook OAuth authorization URL
+ */
+export function getFacebookOAuthUrl(
+  clientId: string,
+  redirectUri: string,
+  state: string
+): string {
+  const params = new URLSearchParams({
+    client_id: clientId,
+    redirect_uri: redirectUri,
+    response_type: 'code',
+    scope: 'pages_manage_metadata,pages_read_user_profile,pages_manage_messaging,pages_read_engagement',
+    state,
+  })
+
+  return `https://www.facebook.com/v19.0/oauth/authorize?${params.toString()}`
+}
+
+/**
+ * Get Facebook Page info (after OAuth)
+ */
+export async function getFacebookPageInfo(
+  accessToken: string,
+  userId: string
+): Promise<{ pageId: string; accountName: string; profilePic?: string; category?: string } | null> {
+  try {
+    // Get user's pages
+    const response = await fetch(
+      `https://graph.facebook.com/v19.0/${userId}/accounts?fields=id,name,picture,category&access_token=${accessToken}`
+    )
+
+    if (!response.ok) {
+      console.error('Failed to fetch Facebook pages')
+      return null
+    }
+
+    const data = await response.json()
+    if (!data.data || data.data.length === 0) {
+      console.warn('User has no Facebook pages')
+      return null
+    }
+
+    // Return the first page (user can connect more later)
+    const page = data.data[0]
+    return {
+      pageId: page.id,
+      accountName: page.name || `Page ${page.id}`,
+      profilePic: page.picture?.data?.url,
+      category: page.category,
+    }
+  } catch (error) {
+    console.error('Failed to get Facebook page info:', error)
+    return null
+  }
+}
