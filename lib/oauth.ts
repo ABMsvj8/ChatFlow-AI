@@ -186,3 +186,62 @@ export async function getFacebookPageInfo(
     return null
   }
 }
+
+/**
+ * Get WhatsApp OAuth authorization URL
+ */
+export function getWhatsAppOAuthUrl(
+  clientId: string,
+  redirectUri: string,
+  state: string
+): string {
+  const params = new URLSearchParams({
+    client_id: clientId,
+    redirect_uri: redirectUri,
+    response_type: 'code',
+    scope: 'whatsapp_business_management,whatsapp_business_messaging,business_management',
+    state,
+  })
+
+  return `https://www.facebook.com/v19.0/oauth/authorize?${params.toString()}`
+}
+
+/**
+ * Get WhatsApp Business Account info (WABA + phone number)
+ */
+export async function getWhatsAppBusinessInfo(
+  accessToken: string,
+  userId: string
+): Promise<{ wabaId: string; phoneNumberId: string; accountName: string; phoneNumber?: string } | null> {
+  try {
+    // Get user's WhatsApp business accounts
+    const response = await fetch(
+      `https://graph.facebook.com/v19.0/${userId}/whatsapp_business_accounts?fields=id,name,phone_number_id,phone_numbers&access_token=${accessToken}`
+    )
+
+    if (!response.ok) {
+      console.error('Failed to fetch WhatsApp business accounts')
+      return null
+    }
+
+    const data = await response.json()
+    if (!data.data || data.data.length === 0) {
+      console.warn('User has no WhatsApp business accounts')
+      return null
+    }
+
+    // Return the first WABA
+    const waba = data.data[0]
+    const phoneNumber = waba.phone_numbers?.[0]?.phone_number || waba.phone_number_id
+
+    return {
+      wabaId: waba.id,
+      phoneNumberId: waba.phone_number_id || '',
+      accountName: waba.name || `WhatsApp ${waba.id}`,
+      phoneNumber,
+    }
+  } catch (error) {
+    console.error('Failed to get WhatsApp business info:', error)
+    return null
+  }
+}
