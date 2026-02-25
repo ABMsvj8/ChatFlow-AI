@@ -34,6 +34,13 @@ interface ConnectedAccount {
   created_at: string
 }
 
+interface Agent {
+  id: string
+  name: string
+  is_active: boolean
+  created_at: string
+}
+
 function DashboardContent() {
   const router = useRouter()
   const pathname = usePathname()
@@ -41,6 +48,7 @@ function DashboardContent() {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [connectedAccounts, setConnectedAccounts] = useState<ConnectedAccount[]>([])
+  const [agents, setAgents] = useState<Agent[]>([])
   const [businessId, setBusinessId] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
@@ -100,6 +108,17 @@ function DashboardContent() {
 
         if (accounts && Array.isArray(accounts)) {
           setConnectedAccounts(accounts as ConnectedAccount[])
+        }
+
+        // Load agents
+        const { data: agentsList } = await supabase
+          .from('agents')
+          .select('id, name, is_active, created_at')
+          .eq('business_id', bid)
+          .order('created_at', { ascending: false })
+
+        if (agentsList && Array.isArray(agentsList)) {
+          setAgents(agentsList as Agent[])
         }
       }
 
@@ -269,23 +288,67 @@ function DashboardContent() {
             <div className="mb-8">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold">Your AI Agents</h2>
+                {agents.length > 0 && (
+                  <Link
+                    href="/onboarding/agent"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-medium text-xs transition-all"
+                  >
+                    New Agent ✨
+                  </Link>
+                )}
               </div>
-              <div className="p-12 rounded-lg border border-zinc-800/50 bg-zinc-900/30 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-600/20 border border-purple-500/30 mb-4">
-                  <Zap className="w-8 h-8 text-purple-400" />
+              {agents.length === 0 ? (
+                <div className="p-12 rounded-lg border border-zinc-800/50 bg-zinc-900/30 text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-600/20 border border-purple-500/30 mb-4">
+                    <Zap className="w-8 h-8 text-purple-400" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">No agents yet</h3>
+                  <p className="text-zinc-400 text-sm mb-6 max-w-sm mx-auto">
+                    Your AI agent handles every incoming DM automatically.
+                  </p>
+                  <Link
+                    href="/onboarding/agent"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-medium text-sm transition-all"
+                  >
+                    Create Your First Agent ✨
+                    <ChevronRight className="w-4 h-4" />
+                  </Link>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">No agents yet</h3>
-                <p className="text-zinc-400 text-sm mb-6 max-w-sm mx-auto">
-                  Your AI agent handles every incoming DM automatically.
-                </p>
-                <Link
-                  href="/onboarding/agent"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-medium text-sm transition-all"
-                >
-                  Create Your First Agent ✨
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {agents.map((agent) => (
+                    <div
+                      key={agent.id}
+                      className="p-5 rounded-lg border border-zinc-800/50 bg-zinc-900/30 hover:bg-zinc-900/50 transition-all flex flex-col"
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg bg-purple-600/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
+                            <Zap className="w-5 h-5 text-purple-400" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-semibold text-sm text-white truncate">{agent.name}</h3>
+                            <p className="text-xs text-zinc-500 mt-0.5">
+                              {agent.is_active ? '🟢 Active' : '🔴 Inactive'}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex gap-2 mt-auto pt-3">
+                        <Link
+                          href={`/dashboard/agents/${agent.id}/edit`}
+                          className="flex-1 px-3 py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 text-xs font-medium transition-all border border-purple-500/30 text-center"
+                        >
+                          Edit
+                        </Link>
+                        <button className="px-3 py-2 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 text-xs font-medium transition-all border border-zinc-700/50">
+                          More
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* SECTION 3: Connected Platforms */}
