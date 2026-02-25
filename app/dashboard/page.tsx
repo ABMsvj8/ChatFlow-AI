@@ -316,9 +316,18 @@ function DashboardContent() {
                       ) : (
                         <p className="text-xs text-zinc-400 mb-3 flex-1">Not connected yet</p>
                       )}
-                      <button className="w-full px-3 py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 text-xs font-medium transition-all border border-purple-500/30">
-                        {platform.connected ? 'Manage' : 'Connect'}
-                      </button>
+                      {platform.name === 'Instagram' ? (
+                        <Link
+                          href="/api/auth/instagram/customers"
+                          className="w-full px-3 py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 text-xs font-medium transition-all border border-purple-500/30 text-center"
+                        >
+                          {platform.connected ? 'Manage' : 'Connect'}
+                        </Link>
+                      ) : (
+                        <button className="w-full px-3 py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 text-xs font-medium transition-all border border-purple-500/30 disabled:opacity-50">
+                          {platform.connected ? 'Manage' : 'Coming Soon'}
+                        </button>
+                      )}
                     </div>
                   )
                 })}
