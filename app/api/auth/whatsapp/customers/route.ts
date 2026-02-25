@@ -32,9 +32,9 @@ export async function GET(request: NextRequest) {
       .single()
 
     if (bizError || !business) {
-      return NextResponse.json(
-        { error: 'No business found. Please complete onboarding first.' },
-        { status: 404 }
+      // Redirect to onboarding instead of erroring
+      return NextResponse.redirect(
+        `${process.env.NEXT_PUBLIC_APP_URL || 'https://chatflow-ai-black.vercel.app'}/onboarding?next=connect-whatsapp`
       )
     }
 
