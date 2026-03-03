@@ -70,10 +70,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const { data, error } = await supabase
       .from('businesses')
       .insert({
-        owner_id: userId,
+        user_id: userId,
         name: trimmedName,
-        slug: uniqueSlug,
-        plan: 'free',
       })
       .select()
       .single()
@@ -101,3 +99,4 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     )
   }
 }
+
