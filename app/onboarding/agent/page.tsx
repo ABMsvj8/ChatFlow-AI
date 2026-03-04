@@ -135,16 +135,16 @@ export default function AgentGeniePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#FAFAF9] via-white to-white flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-2xl flex flex-col h-[85vh]">
         {/* Header */}
         <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-white">✨ Agent Genie</h1>
-          <p className="text-zinc-400 text-sm mt-1">Your AI agent setup wizard</p>
+          <h1 className="text-2xl font-bold text-gray-900">✨ Agent Genie</h1>
+          <p className="text-gray-600 text-sm mt-1">Your AI agent setup wizard</p>
           {step > 0 && !isComplete && (
             <div className="flex justify-center gap-1 mt-3">
               {[1,2,3,4,5].map(s => (
-                <div key={s} className={`h-1 w-8 rounded-full transition-all ${step >= s ? 'bg-purple-600' : 'bg-zinc-800'}`} />
+                <div key={s} className={`h-1 w-8 rounded-full transition-all ${step >= s ? 'bg-gradient-to-r from-pink-500 to-purple-500' : 'bg-gray-300'}`} />
               ))}
             </div>
           )}
@@ -162,8 +162,8 @@ export default function AgentGeniePage() {
               >
                 <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm ${
                   msg.role === 'genie'
-                    ? 'bg-purple-600/20 border border-purple-600/30 text-white'
-                    : 'bg-zinc-800 text-white'
+                    ? 'brand-glow-purple text-gray-900'
+                    : 'bg-gray-100 border border-gray-300 text-gray-900'
                 }`}>
                   {msg.content}
                 </div>
@@ -173,10 +173,10 @@ export default function AgentGeniePage() {
 
           {isTyping && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
-              <div className="bg-purple-600/20 border border-purple-600/30 px-4 py-3 rounded-2xl">
+              <div className="brand-glow-purple px-4 py-3 rounded-2xl">
                 <div className="flex gap-1">
                   {[0,1,2].map(i => (
-                    <motion.div key={i} className="w-2 h-2 bg-purple-400 rounded-full"
+                    <motion.div key={i} className="w-2 h-2 bg-gray-800 rounded-full"
                       animate={{ y: [0,-4,0] }} transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.1 }} />
                   ))}
                 </div>
@@ -189,7 +189,7 @@ export default function AgentGeniePage() {
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-2 gap-2">
               {GOAL_OPTIONS.map(opt => (
                 <button key={opt.value} onClick={() => handleGoalSelect(opt.value, opt.label)}
-                  className="p-3 bg-zinc-900 border border-zinc-700 hover:border-purple-600 hover:bg-purple-600/10 rounded-xl text-white text-sm transition-all">
+                  className="p-3 bg-white border border-gray-300 hover:border-pink-500 hover:bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl text-gray-900 brand-gradient-border text-sm transition-all">
                   {opt.label}
                 </button>
               ))}
@@ -201,7 +201,7 @@ export default function AgentGeniePage() {
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-2 gap-2">
               {TONE_OPTIONS.map(opt => (
                 <button key={opt.value} onClick={() => handleToneSelect(opt.value, opt.label)}
-                  className="p-3 bg-zinc-900 border border-zinc-700 hover:border-purple-600 hover:bg-purple-600/10 rounded-xl text-white text-sm transition-all">
+                  className="p-3 bg-white border border-gray-300 hover:border-pink-500 hover:bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl text-gray-900 brand-gradient-border text-sm transition-all">
                   {opt.label}
                 </button>
               ))}
@@ -216,7 +216,7 @@ export default function AgentGeniePage() {
           <div className="flex gap-2 pt-2">
             {step === 4 && (
               <button onClick={handleSkip}
-                className="px-4 py-3 bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-400 text-sm rounded-xl transition-all">
+                className="px-4 py-3 bg-gray-100 border border-gray-300 hover:border-gray-500 text-gray-700 text-sm rounded-xl transition-all">
                 Skip
               </button>
             )}
@@ -225,11 +225,11 @@ export default function AgentGeniePage() {
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleTextSubmit()}
               placeholder={step === 5 ? "Agent name..." : "Type your answer..."}
-              className="flex-1 bg-zinc-900 border border-zinc-700 focus:border-purple-600 text-white px-4 py-3 rounded-xl outline-none text-sm transition-all"
+              className="flex-1 bg-white border border-gray-300 focus:border-pink-500 text-gray-900 px-4 py-3 rounded-xl outline-none text-sm transition-all"
               autoFocus
             />
             <button onClick={handleTextSubmit}
-              className="px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-sm font-medium transition-all">
+              className="px-4 py-3 btn-primary-gradient hover:shadow-lg text-white rounded-xl text-sm font-medium transition-all">
               {step === 5 ? '🚀 Launch' : 'Send'}
             </button>
           </div>
