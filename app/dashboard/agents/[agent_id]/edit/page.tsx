@@ -157,24 +157,24 @@ export default function AgentEditorPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white p-8">
-        <div className="text-zinc-400">Loading agent...</div>
+      <div className="min-h-screen bg-white text-gray-900 p-8">
+        <div className="text-gray-600">Loading agent...</div>
       </div>
     )
   }
 
   if (!agent) {
     return (
-      <div className="min-h-screen bg-black text-white p-8">
-        <div className="text-red-400">Agent not found</div>
+      <div className="min-h-screen bg-white text-gray-900 p-8">
+        <div className="text-red-600">Agent not found</div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
+    <div className="min-h-screen bg-white text-gray-900 p-8">
       {/* Back Button */}
-      <Link href="/dashboard/agents" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-all mb-8">
+      <Link href="/dashboard/agents" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-all mb-8">
         <ArrowLeft className="w-4 h-4" />
         Back to Agents
       </Link>
@@ -182,27 +182,27 @@ export default function AgentEditorPage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-1">Edit Agent</h1>
-        <p className="text-zinc-400">{agent.name}</p>
+        <p className="text-gray-600">{agent.name}</p>
       </div>
 
       {/* Error Message */}
       {error && (
-        <div className="mb-6 p-4 rounded-lg bg-red-950/50 border border-red-800/50 flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-red-200 font-medium">Error</p>
-            <p className="text-red-300 text-sm mt-1">{error}</p>
+            <p className="text-red-800 font-medium">Error</p>
+            <p className="text-red-700 text-sm mt-1">{error}</p>
           </div>
         </div>
       )}
 
       {/* Success Message */}
       {success && (
-        <div className="mb-6 p-4 rounded-lg bg-green-950/50 border border-green-800/50 flex items-start gap-3">
-          <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 rounded-lg bg-green-50 border border-green-200 flex items-start gap-3">
+          <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="text-green-200 font-medium">Success</p>
-            <p className="text-green-300 text-sm mt-1">{success}</p>
+            <p className="text-green-800 font-medium">Success</p>
+            <p className="text-green-700 text-sm mt-1">{success}</p>
           </div>
         </div>
       )}
@@ -216,7 +216,7 @@ export default function AgentEditorPage() {
             type="text"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full px-4 py-2 rounded-lg bg-zinc-800/30 border border-zinc-700/50 text-white placeholder-zinc-500 text-sm focus:outline-none focus:ring-1 focus:ring-purple-500"
+            className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
             placeholder="e.g., Sales Assistant"
             disabled={saving}
           />
@@ -270,12 +270,12 @@ export default function AgentEditorPage() {
           <textarea
             value={formData.custom_instructions}
             onChange={(e) => setFormData({ ...formData, custom_instructions: e.target.value })}
-            className="w-full px-4 py-2 rounded-lg bg-zinc-800/30 border border-zinc-700/50 text-white placeholder-zinc-500 text-sm focus:outline-none focus:ring-1 focus:ring-purple-500"
+            className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
             placeholder="e.g., Always ask for phone number before ending conversation"
             rows={6}
             disabled={saving}
           />
-          <p className="text-xs text-zinc-500 mt-2">
+          <p className="text-xs text-gray-500 mt-2">
             Add specific instructions to guide the agent's behavior
           </p>
         </div>
@@ -286,12 +286,12 @@ export default function AgentEditorPage() {
           <textarea
             value={formData.knowledge_base}
             onChange={(e) => setFormData({ ...formData, knowledge_base: e.target.value })}
-            className="w-full px-4 py-2 rounded-lg bg-zinc-800/30 border border-zinc-700/50 text-white placeholder-zinc-500 text-sm focus:outline-none focus:ring-1 focus:ring-purple-500"
+            className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
             placeholder="e.g., Our prices: Basic $99/mo, Pro $299/mo. Hours: 9am-5pm EST."
             rows={6}
             disabled={saving}
           />
-          <p className="text-xs text-zinc-500 mt-2">
+          <p className="text-xs text-gray-500 mt-2">
             Paste company info, FAQs, pricing, or other context the agent should know
           </p>
         </div>
@@ -301,13 +301,13 @@ export default function AgentEditorPage() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex-1 px-6 py-3 rounded-lg bg-purple-600 hover:bg-purple-700 disabled:bg-purple-600/50 text-white font-medium transition-all"
+            className="flex-1 px-6 py-3 rounded-lg btn-primary-gradient hover:shadow-lg disabled:bg-gray-300 disabled:text-gray-500 font-medium transition-all"
           >
             {saving ? 'Saving...' : 'Save Agent'}
           </button>
           <Link
             href="/dashboard/agents"
-            className="flex-1 px-6 py-3 rounded-lg bg-zinc-800/30 hover:bg-zinc-800/50 text-white font-medium text-center transition-all border border-zinc-700/50"
+            className="flex-1 px-6 py-3 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium text-center transition-all border border-gray-300"
           >
             Cancel
           </Link>
