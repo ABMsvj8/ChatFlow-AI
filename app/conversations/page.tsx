@@ -122,26 +122,26 @@ function ConversationsContent() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-black">
-        <div className="text-zinc-400">Loading conversations...</div>
+      <div className="flex items-center justify-center h-screen bg-white">
+        <div className="text-gray-600">Loading conversations...</div>
       </div>
     )
   }
 
   if (!businessId) {
     return (
-      <div className="flex items-center justify-center h-screen bg-black">
-        <div className="text-zinc-400">No business found</div>
+      <div className="flex items-center justify-center h-screen bg-white">
+        <div className="text-gray-600">No business found</div>
       </div>
     )
   }
 
   return (
-    <div className="h-screen flex flex-col bg-black text-white">
+    <div className="h-screen flex flex-col bg-white text-gray-900">
       {/* Header */}
-      <div className="p-6 border-b border-zinc-800/50">
-        <h1 className="text-2xl font-bold">Conversations</h1>
-        <p className="text-zinc-400 text-sm mt-1">
+      <div className="p-6 border-b border-gray-200">
+        <h1 className="text-2xl font-bold text-gray-900">Conversations</h1>
+        <p className="text-gray-600 text-sm mt-1">
           {conversations.length} conversation{conversations.length !== 1 ? 's' : ''}
         </p>
       </div>
@@ -149,7 +149,7 @@ function ConversationsContent() {
       {/* Main Content */}
       <div className="flex flex-1 overflow-hidden">
         {/* Left Panel - Conversation List */}
-        <div className="w-96 border-r border-zinc-800/50 flex flex-col overflow-hidden">
+        <div className="w-96 border-r border-gray-200 flex flex-col overflow-hidden">
           <ConversationList
             conversations={conversations}
             selectedId={selectedConversationId}
@@ -159,14 +159,14 @@ function ConversationsContent() {
         </div>
 
         {/* Right Panel - Thread View */}
-        <div className="flex-1 flex flex-col overflow-hidden bg-zinc-900/20">
+        <div className="flex-1 flex flex-col overflow-hidden bg-[#FAFAF9]">
           {selectedConversationId ? (
             <ThreadView conversationId={selectedConversationId} businessId={businessId} />
           ) : (
             <div className="flex items-center justify-center h-full">
               <div className="text-center">
-                <div className="text-zinc-500 text-lg mb-2">Select a conversation to view</div>
-                <p className="text-zinc-600 text-sm">
+                <div className="text-gray-500 text-lg mb-2">Select a conversation to view</div>
+                <p className="text-gray-600 text-sm">
                   {conversations.length === 0
                     ? 'No conversations yet. Connect a platform and launch your agent to get started.'
                     : 'Click a conversation on the left to see the full thread.'}
@@ -179,7 +179,7 @@ function ConversationsContent() {
 
       {/* Error Banner */}
       {error && (
-        <div className="p-4 bg-red-950/50 border-t border-red-800/50 text-red-200 text-sm">
+        <div className="p-4 bg-red-50 border-t border-red-200 text-red-800 text-sm">
           {error}
         </div>
       )}
@@ -191,8 +191,8 @@ export default function ConversationsPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex items-center justify-center h-screen bg-black">
-          <div className="text-zinc-400">Loading conversations...</div>
+        <div className="flex items-center justify-center h-screen bg-white">
+          <div className="text-gray-600">Loading conversations...</div>
         </div>
       }
     >
