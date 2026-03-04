@@ -148,7 +148,7 @@ function DashboardContent() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-black">
+      <div className="flex items-center justify-center h-screen bg-white">
         <div className="text-gray-600">Loading...</div>
       </div>
     )
@@ -431,7 +431,7 @@ function DashboardContent() {
 
 export default function DashboardPage() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center h-screen bg-black"><div className="text-gray-600">Loading...</div></div>}>
+    <Suspense fallback={<div className="flex items-center justify-center h-screen bg-white"><div className="text-gray-600">Loading...</div></div>}>
       <DashboardContent />
     </Suspense>
   )
