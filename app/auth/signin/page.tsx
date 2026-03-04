@@ -62,22 +62,22 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-4">
+    <div className="flex min-h-screen items-center justify-center bg-white px-4">
       <div className="w-full max-w-md">
         {/* Back to Home */}
         <Link
           href="/"
-          className="mb-8 inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-300 transition-colors"
+          className="mb-8 inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-700 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Home
         </Link>
 
-        <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-8 shadow-2xl">
+        <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-lg brand-gradient-border">
           {/* Header */}
           <div className="mb-8 text-center">
-            <h1 className="text-2xl font-bold text-zinc-50">ChatFlow AI</h1>
-            <p className="mt-2 text-sm text-zinc-400">
+            <h1 className="text-2xl font-bold text-gray-900">ChatFlow AI</h1>
+            <p className="mt-2 text-sm text-gray-600">
               {mode === 'signin' ? 'Sign in to your account' : 'Create a new account'}
             </p>
           </div>
@@ -86,11 +86,11 @@ export default function SignInPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-zinc-300">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
               </label>
               <div className="relative mt-2">
-                <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
+                <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                 <input
                   id="email"
                   type="email"
@@ -99,18 +99,18 @@ export default function SignInPage() {
                   onChange={(e): void => setEmail(e.target.value)}
                   required
                   disabled={loading}
-                  className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2 pl-10 pr-4 text-sm text-zinc-50 placeholder-zinc-500 transition-colors disabled:bg-zinc-900 disabled:text-zinc-600 focus:border-zinc-600 focus:outline-none"
+                  className="w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-500 transition-colors disabled:bg-gray-100 disabled:text-gray-400 focus:border-pink-500 focus:outline-none"
                 />
               </div>
             </div>
 
             {/* Password Input */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-zinc-300">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <div className="relative mt-2">
-                <Lock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
+                <Lock className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-9000" />
                 <input
                   id="password"
                   type="password"
@@ -119,7 +119,7 @@ export default function SignInPage() {
                   onChange={(e): void => setPassword(e.target.value)}
                   required
                   disabled={loading}
-                  className="w-full rounded-lg border border-zinc-700 bg-zinc-800 py-2 pl-10 pr-4 text-sm text-zinc-50 placeholder-zinc-500 transition-colors disabled:bg-zinc-900 disabled:text-zinc-600 focus:border-zinc-600 focus:outline-none"
+                  className="w-full rounded-lg border border-gray-300 bg-gray-50 py-2 pl-10 pr-4 text-sm text-gray-900 placeholder-gray-500 transition-colors disabled:bg-gray-100 disabled:text-gray-400 focus:border-pink-500 focus:outline-none"
                 />
               </div>
             </div>
@@ -129,8 +129,8 @@ export default function SignInPage() {
               <div
                 className={`rounded-lg p-3 text-sm ${
                   error.includes('Check your email')
-                    ? 'border border-emerald-900 bg-emerald-950 text-emerald-200'
-                    : 'border border-red-900 bg-red-950 text-red-200'
+                    ? 'border border-emerald-200 bg-emerald-50 text-emerald-800'
+                    : 'border border-red-200 bg-red-50 text-red-800'
                 }`}
               >
                 {error}
@@ -141,7 +141,7 @@ export default function SignInPage() {
             <button
               type="submit"
               disabled={loading || !email || !password}
-              className="w-full rounded-lg bg-white py-2.5 font-semibold text-zinc-900 transition-colors hover:bg-zinc-100 disabled:bg-zinc-700 disabled:cursor-not-allowed disabled:text-zinc-500"
+              className="w-full rounded-lg bg-white py-2.5 font-semibold text-zinc-900 transition-colors hover:bg-zinc-100 disabled:bg-zinc-700 disabled:cursor-not-allowed disabled:text-gray-400"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -157,8 +157,8 @@ export default function SignInPage() {
           </form>
 
           {/* Toggle Mode */}
-          <div className="mt-6 border-t border-zinc-800 pt-6 text-center">
-            <p className="text-sm text-zinc-400">
+          <div className="mt-6 border-t border-gray-200 pt-6 text-center">
+            <p className="text-sm text-gray-600">
               {mode === 'signin' ? "Don't have an account? " : 'Already have an account? '}
               <button
                 type="button"
@@ -168,7 +168,7 @@ export default function SignInPage() {
                   setEmail('')
                   setPassword('')
                 }}
-                className="font-medium text-zinc-50 hover:underline"
+                className="font-medium text-gray-900 hover:underline"
               >
                 {mode === 'signin' ? 'Sign up' : 'Sign in'}
               </button>
