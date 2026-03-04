@@ -229,7 +229,7 @@ export default function ThreadView({ conversationId, businessId }: ThreadViewPro
 
       {/* Human Input (if in takeover mode) */}
       {isHumanTakeover && (
-        <div className="p-4 border-t border-zinc-800/50 bg-blue-950/10">
+        <div className="p-4 border-t border-gray-200 bg-blue-50">
           <div className="flex gap-2">
             <input
               type="text"
@@ -242,13 +242,13 @@ export default function ThreadView({ conversationId, businessId }: ThreadViewPro
                   handleSendMessage()
                 }
               }}
-              className="flex-1 px-4 py-2 rounded-lg bg-zinc-800/30 border border-zinc-700/50 text-white placeholder-zinc-500 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="flex-1 px-4 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-500 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500 focus:border-pink-500"
               disabled={isSending}
             />
             <button
               onClick={handleSendMessage}
               disabled={isSending || !humanInput.trim()}
-              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 disabled:bg-blue-600/50 text-white text-sm font-medium transition-all"
+              className="px-4 py-2 rounded-lg btn-primary-gradient hover:shadow-md disabled:opacity-50 text-white text-sm font-medium transition-all"
             >
               {isSending ? 'Sending...' : 'Send'}
             </button>
