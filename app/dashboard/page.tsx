@@ -149,7 +149,7 @@ function DashboardContent() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen bg-black">
-        <div className="text-zinc-400">Loading...</div>
+        <div className="text-gray-600">Loading...</div>
       </div>
     )
   }
@@ -183,17 +183,17 @@ function DashboardContent() {
   ]
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       <div className="flex h-screen">
         {/* Sidebar */}
-        <div className="w-64 border-r border-zinc-800/50 bg-zinc-950/30 flex flex-col">
+        <div className="w-64 border-r border-gray-200 bg-white flex flex-col shadow-sm">
           {/* Logo */}
-          <div className="p-6 border-b border-zinc-800/50">
+          <div className="p-6 border-b border-gray-200">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg flex items-center justify-center">
                 <span className="text-white text-lg font-bold">⚡</span>
               </div>
-              <span className="text-white font-bold text-sm">ChatFlow AI</span>
+              <span className="text-gray-900 font-bold text-sm">ChatFlow AI</span>
             </div>
           </div>
 
@@ -208,8 +208,8 @@ function DashboardContent() {
                   href={item.href}
                   className={`flex items-center gap-3 px-4 py-2.5 rounded-lg font-medium text-sm transition-all ${
                     active
-                      ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30'
-                      : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30'
+                      ? 'bg-gradient-to-r from-pink-50 to-purple-50 text-gray-900 border border-gray-200 shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   }`}
                 >
                   <Icon className="w-5 h-5" />
@@ -220,13 +220,13 @@ function DashboardContent() {
           </nav>
 
           {/* User Section */}
-          <div className="p-4 border-t border-zinc-800/50 space-y-2">
+          <div className="p-4 border-t border-gray-200 space-y-2">
             <div className="px-4 py-2">
-              <p className="text-xs text-zinc-500 truncate">{user?.email}</p>
+              <p className="text-xs text-gray-500 truncate">{user?.email}</p>
             </div>
             <button
               onClick={handleSignOut}
-              className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/30 transition-all"
+              className="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all"
             >
               <LogOut className="w-5 h-5" />
               Sign Out
@@ -235,33 +235,33 @@ function DashboardContent() {
         </div>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 overflow-auto bg-[#FAFAF9]">
           <div className="p-8">
             {/* Error/Success Messages */}
             {error && (
-              <div className="mb-6 p-4 rounded-lg bg-red-950/50 border border-red-800/50 flex items-start gap-3">
-                <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
+              <div className="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 flex items-start gap-3">
+                <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-red-200 font-medium">Connection failed</p>
-                  <p className="text-red-300 text-sm mt-1">{error}</p>
+                  <p className="text-red-800 font-medium">Connection failed</p>
+                  <p className="text-red-600 text-sm mt-1">{error}</p>
                 </div>
               </div>
             )}
 
             {success && (
-              <div className="mb-6 p-4 rounded-lg bg-green-950/50 border border-green-800/50 flex items-start gap-3">
-                <CheckCircle2 className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+              <div className="mb-6 p-4 rounded-lg bg-green-50 border border-green-200 flex items-start gap-3">
+                <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-green-200 font-medium">Success!</p>
-                  <p className="text-green-300 text-sm mt-1">{success}</p>
+                  <p className="text-green-800 font-medium">Success!</p>
+                  <p className="text-green-600 text-sm mt-1">{success}</p>
                 </div>
               </div>
             )}
 
             {/* Header */}
             <div className="mb-8">
-              <h1 className="text-3xl font-bold mb-1">Dashboard</h1>
-              <p className="text-zinc-400">Welcome back to ChatFlow AI</p>
+              <h1 className="text-3xl font-bold mb-1 text-gray-900">Dashboard</h1>
+              <p className="text-gray-600">Welcome back to ChatFlow AI</p>
             </div>
 
             {/* SECTION 1: Stats Bar */}
@@ -275,10 +275,10 @@ function DashboardContent() {
                 ].map((stat, i) => (
                   <div
                     key={i}
-                    className="p-5 rounded-lg border border-zinc-800/50 bg-zinc-900/30 hover:bg-zinc-900/50 transition-all"
+                    className="p-5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-all brand-gradient-border"
                   >
-                    <p className="text-zinc-400 text-xs font-medium mb-2">{stat.label}</p>
-                    <p className="text-2xl font-bold text-white">{stat.value}</p>
+                    <p className="text-gray-600 text-xs font-medium mb-2">{stat.label}</p>
+                    <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
                   </div>
                 ))}
               </div>
@@ -291,24 +291,24 @@ function DashboardContent() {
                 {agents.length > 0 && (
                   <Link
                     href="/onboarding/agent"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-medium text-xs transition-all"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-primary-gradient font-medium text-xs transition-all hover:shadow-md"
                   >
                     New Agent ✨
                   </Link>
                 )}
               </div>
               {agents.length === 0 ? (
-                <div className="p-12 rounded-lg border border-zinc-800/50 bg-zinc-900/30 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-600/20 border border-purple-500/30 mb-4">
-                    <Zap className="w-8 h-8 text-purple-400" />
+                <div className="p-12 rounded-lg border border-gray-200 bg-white text-center brand-gradient-border">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg brand-glow-purple mb-4">
+                    <Zap className="w-8 h-8 text-gray-800" />
                   </div>
-                  <h3 className="text-lg font-semibold mb-2">No agents yet</h3>
-                  <p className="text-zinc-400 text-sm mb-6 max-w-sm mx-auto">
+                  <h3 className="text-lg font-semibold mb-2 text-gray-900">No agents yet</h3>
+                  <p className="text-gray-600 text-sm mb-6 max-w-sm mx-auto">
                     Your AI agent handles every incoming DM automatically.
                   </p>
                   <Link
                     href="/onboarding/agent"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-purple-600 hover:bg-purple-700 text-white font-medium text-sm transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg btn-primary-gradient font-medium text-sm transition-all hover:shadow-lg"
                   >
                     Create Your First Agent ✨
                     <ChevronRight className="w-4 h-4" />
@@ -319,16 +319,16 @@ function DashboardContent() {
                   {agents.map((agent) => (
                     <div
                       key={agent.id}
-                      className="p-5 rounded-lg border border-zinc-800/50 bg-zinc-900/30 hover:bg-zinc-900/50 transition-all flex flex-col"
+                      className="p-5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-all flex flex-col"
                     >
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-purple-600/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
-                            <Zap className="w-5 h-5 text-purple-400" />
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-pink-50 to-purple-50 border border-gray-200 flex items-center justify-center flex-shrink-0">
+                            <Zap className="w-5 h-5 text-gray-800" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="font-semibold text-sm text-white truncate">{agent.name}</h3>
-                            <p className="text-xs text-zinc-500 mt-0.5">
+                            <h3 className="font-semibold text-sm text-gray-900 truncate">{agent.name}</h3>
+                            <p className="text-xs text-gray-500 mt-0.5">
                               {agent.is_active ? '🟢 Active' : '🔴 Inactive'}
                             </p>
                           </div>
@@ -337,11 +337,11 @@ function DashboardContent() {
                       <div className="flex gap-2 mt-auto pt-3">
                         <Link
                           href={`/dashboard/agents/${agent.id}/edit`}
-                          className="flex-1 px-3 py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/30 text-purple-400 text-xs font-medium transition-all border border-purple-500/30 text-center"
+                          className="flex-1 px-3 py-2 rounded-lg bg-gradient-to-r from-pink-50 to-purple-50 hover:from-pink-100 hover:to-purple-100 text-gray-700 text-xs font-medium transition-all border border-gray-300 text-center brand-gradient-border"
                         >
                           Edit
                         </Link>
-                        <button className="px-3 py-2 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 text-xs font-medium transition-all border border-zinc-700/50">
+                        <button className="px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium transition-all border border-gray-300">
                           More
                         </button>
                       </div>
@@ -360,10 +360,10 @@ function DashboardContent() {
                   return (
                     <div
                       key={i}
-                      className="p-5 rounded-lg border border-zinc-800/50 bg-zinc-900/30 hover:bg-zinc-900/50 transition-all flex flex-col"
+                      className="p-5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-all flex flex-col"
                     >
                       <div className="flex items-start justify-between mb-3">
-                        <Icon className="w-6 h-6 text-zinc-400" />
+                        <Icon className="w-6 h-6 text-gray-600" />
                         {platform.connected && (
                           <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-green-500/20 text-green-400 border border-green-500/30">
                             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
@@ -373,11 +373,11 @@ function DashboardContent() {
                       </div>
                       <h3 className="font-semibold text-sm mb-2">{platform.name}</h3>
                       {platform.connected ? (
-                        <p className="text-xs text-zinc-400 mb-3 flex-1">
+                        <p className="text-xs text-gray-600 mb-3 flex-1">
                           Connected as <span className="text-zinc-300">{platform.account || 'Account'}</span>
                         </p>
                       ) : (
-                        <p className="text-xs text-zinc-400 mb-3 flex-1">Not connected yet</p>
+                        <p className="text-xs text-gray-600 mb-3 flex-1">Not connected yet</p>
                       )}
                       {platform.name === 'Instagram' ? (
                         <Link
@@ -414,10 +414,10 @@ function DashboardContent() {
             {/* SECTION 4: Recent Conversations */}
             <div>
               <h2 className="text-xl font-bold mb-4">Recent Conversations</h2>
-              <div className="p-12 rounded-lg border border-zinc-800/50 bg-zinc-900/30 text-center">
-                <MessageSquare className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
+              <div className="p-12 rounded-lg border border-gray-200 bg-white text-center brand-gradient-border">
+                <MessageSquare className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-2">No conversations yet</h3>
-                <p className="text-zinc-400 text-sm">
+                <p className="text-gray-600 text-sm">
                   Connect a platform and create an agent to get started.
                 </p>
               </div>
@@ -431,7 +431,7 @@ function DashboardContent() {
 
 export default function DashboardPage() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center h-screen bg-black"><div className="text-zinc-400">Loading...</div></div>}>
+    <Suspense fallback={<div className="flex items-center justify-center h-screen bg-black"><div className="text-gray-600">Loading...</div></div>}>
       <DashboardContent />
     </Suspense>
   )

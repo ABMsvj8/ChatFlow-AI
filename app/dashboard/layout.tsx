@@ -7,5 +7,5 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode
 }): React.ReactElement {
-  return <div className="bg-black text-white">{children}</div>
+  return <div className="bg-white text-gray-900">{children}</div>
 }
