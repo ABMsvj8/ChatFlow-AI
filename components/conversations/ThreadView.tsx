@@ -184,7 +184,7 @@ export default function ThreadView({ conversationId, businessId }: ThreadViewPro
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-zinc-400">Loading thread...</div>
+        <div className="text-gray-600">Loading thread...</div>
       </div>
     )
   }
@@ -192,7 +192,7 @@ export default function ThreadView({ conversationId, businessId }: ThreadViewPro
   if (!conversation) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-zinc-400">Conversation not found</div>
+        <div className="text-gray-600">Conversation not found</div>
       </div>
     )
   }
@@ -200,11 +200,11 @@ export default function ThreadView({ conversationId, businessId }: ThreadViewPro
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="p-4 border-b border-zinc-800/50">
+      <div className="p-4 border-b border-gray-200">
         <h2 className="text-lg font-semibold">
           {conversation.platform_user_name || 'Unknown Customer'}
         </h2>
-        <p className="text-xs text-zinc-500 mt-1">
+        <p className="text-xs text-gray-500 mt-1">
           {messages.length} message{messages.length !== 1 ? 's' : ''}
         </p>
       </div>
@@ -214,7 +214,7 @@ export default function ThreadView({ conversationId, businessId }: ThreadViewPro
         {messages.length === 0 ? (
           <div className="flex items-center justify-center h-full text-center">
             <div>
-              <p className="text-zinc-500 text-sm">No messages yet</p>
+              <p className="text-gray-500 text-sm">No messages yet</p>
             </div>
           </div>
         ) : (

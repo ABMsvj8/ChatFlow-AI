@@ -65,15 +65,15 @@ export default function ConversationList({
   return (
     <div className="flex flex-col h-full">
       {/* Search Bar */}
-      <div className="p-4 border-b border-zinc-800/50 space-y-3">
+      <div className="p-4 border-b border-gray-200 space-y-3">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input
             type="text"
             placeholder="Search conversations..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-lg bg-zinc-800/30 border border-zinc-700/50 text-white placeholder-zinc-500 text-sm focus:outline-none focus:ring-1 focus:ring-purple-500"
+            className="w-full pl-9 pr-4 py-2 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 placeholder-gray-500 text-sm focus:outline-none focus:ring-1 focus:ring-pink-500"
           />
         </div>
 
@@ -85,8 +85,8 @@ export default function ConversationList({
               onClick={() => setFilterStatus(filter.value)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
                 filterStatus === filter.value
-                  ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30'
-                  : 'bg-zinc-800/20 text-zinc-400 border border-zinc-700/30 hover:bg-zinc-800/30'
+                  ? 'bg-gradient-to-r from-pink-50 to-purple-50 text-gray-900 border border-gray-300 brand-gradient-border'
+                  : 'bg-gray-100 text-gray-600 border border-gray-300 hover:bg-gray-200'
               }`}
             >
               {filter.label}
@@ -100,7 +100,7 @@ export default function ConversationList({
         {filteredConversations.length === 0 ? (
           <div className="flex items-center justify-center h-full text-center px-4">
             <div>
-              <p className="text-zinc-500 text-sm">
+              <p className="text-gray-500 text-sm">
                 {conversations.length === 0
                   ? 'No conversations yet'
                   : 'No conversations match your search'}
@@ -108,7 +108,7 @@ export default function ConversationList({
             </div>
           </div>
         ) : (
-          <div className="divide-y divide-zinc-800/50">
+          <div className="divide-y divide-gray-200">
             {filteredConversations.map((conversation) => (
               <ConversationListItem
                 key={conversation.id}

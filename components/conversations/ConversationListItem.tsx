@@ -23,11 +23,11 @@ export default function ConversationListItem({
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'active':
-        return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-green-500/20 text-green-400"><span className="w-1.5 h-1.5 rounded-full bg-green-400" />Active</span>
+        return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"><span className="w-1.5 h-1.5 rounded-full bg-green-600" />Active</span>
       case 'resolved':
-        return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-zinc-500/20 text-zinc-400"><span className="w-1.5 h-1.5 rounded-full bg-zinc-400" />Resolved</span>
+        return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"><span className="w-1.5 h-1.5 rounded-full bg-gray-600" />Resolved</span>
       case 'escalated':
-        return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-blue-500/20 text-blue-400"><span className="w-1.5 h-1.5 rounded-full bg-blue-400" />Handed Off</span>
+        return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"><span className="w-1.5 h-1.5 rounded-full bg-blue-600" />Handed Off</span>
       default:
         return null
     }
@@ -42,17 +42,17 @@ export default function ConversationListItem({
       onClick={onSelect}
       className={`w-full px-4 py-3 text-left transition-all border-l-2 ${
         isSelected
-          ? 'bg-zinc-800/40 border-l-purple-500 border-r-0'
-          : 'border-l-transparent hover:bg-zinc-800/20'
+          ? 'bg-gradient-to-r from-pink-50 to-purple-50 border-l-pink-500 border-r-0 brand-gradient-border'
+          : 'border-l-transparent hover:bg-gray-100'
       }`}
     >
       <div className="flex items-start justify-between gap-2 mb-1">
-        <div className="font-medium text-sm text-white truncate">
+        <div className="font-medium text-sm text-gray-900 truncate">
           {conversation.platform_user_name || 'Unknown Customer'}
         </div>
         {getStatusBadge(conversation.status)}
       </div>
-      <div className="text-xs text-zinc-500">{relativeTime}</div>
+      <div className="text-xs text-gray-500">{relativeTime}</div>
     </button>
   )
 }
