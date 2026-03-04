@@ -38,18 +38,18 @@ export default function AnalyticsPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-black">
-        <div className="text-zinc-400">Loading analytics...</div>
+      <div className="flex items-center justify-center h-screen bg-white">
+        <div className="text-gray-600">Loading analytics...</div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white p-8">
+    <div className="min-h-screen bg-white text-gray-900 p-8">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-1">Analytics</h1>
-        <p className="text-zinc-400">Performance insights and metrics</p>
+        <p className="text-gray-600">Performance insights and metrics</p>
       </div>
 
       {/* Stats Cards */}
